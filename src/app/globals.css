@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f0e7;
+  --foreground: #15233b;
 }
 
 @theme inline {
@@ -13,10 +13,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* The product palette intentionally stays light for a calm learning experience. */
 }
 
 body {
@@ -24,3 +21,5 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+::selection { background: #ffb7a7; color: #15233b; }

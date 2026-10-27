@@ -1,0 +1,10 @@
+"use client";
+import Link from "next/link";
+import { useActionState } from "react";
+import { submitContactMessage } from "@/app/actions";
+import { ActionMessage } from "@/app/components/action-message";
+const initial = { error: "", success: "" };
+export default function ContactPage() {
+  const [state, action, pending] = useActionState(submitContactMessage, initial);
+  return <main className="min-h-screen px-6 py-8"><div className="mx-auto max-w-5xl"><Link href="/" className="font-bold">tutor<span className="text-[#78904a]">acumen</span></Link><div className="grid gap-14 py-20 md:grid-cols-[.8fr_1.2fr]"><div><p className="text-sm font-semibold uppercase tracking-[.18em] text-[#78904a]">Say hello</p><h1 className="mt-3 text-5xl font-bold tracking-tight">We’re here to help.</h1><p className="mt-6 leading-7 text-[#627067]">Questions about finding a tutor, joining our network, or just want to learn more? Drop us a line.</p><div className="mt-10 space-y-3 text-sm"><p><strong>Email</strong><br /><a className="text-[#78904a]" href="mailto:hello@tutoracumen.com">hello@tutoracumen.com</a></p><p><strong>Instagram</strong><br /><span className="text-[#627067]">@tutoracumen</span></p><p><strong>LinkedIn</strong><br /><span className="text-[#627067]">Tutor Acumen</span></p></div></div><form action={action} className="rounded-3xl bg-white p-7 shadow-sm sm:p-10"><label className="block text-sm font-semibold">Name<input name="name" required className="mt-2 w-full rounded-xl border border-[#dce2d5] p-3 font-normal" /></label><label className="mt-5 block text-sm font-semibold">Email<input name="email" type="email" required className="mt-2 w-full rounded-xl border border-[#dce2d5] p-3 font-normal" /></label><label className="mt-5 block text-sm font-semibold">Message<textarea name="message" rows={6} required className="mt-2 w-full rounded-xl border border-[#dce2d5] p-3 font-normal" /></label><ActionMessage message={state.error || state.success} /><button disabled={pending} className="mt-6 rounded-full bg-[#17231d] px-7 py-3.5 font-semibold text-white">{pending ? "Sending..." : "Send message"}</button></form></div></div></main>;
+}

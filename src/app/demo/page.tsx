@@ -1,0 +1,5 @@
+import Link from "next/link";
+export default function DemoPage() {
+  const url = process.env.NEXT_PUBLIC_CALCOM_URL;
+  return <main className="min-h-screen px-6 py-8"><div className="mx-auto max-w-5xl"><Link href="/" className="font-bold">tutor<span className="text-[#78904a]">acumen</span></Link><div className="py-20 text-center"><p className="text-sm font-semibold uppercase tracking-[.18em] text-[#78904a]">No pressure, just possibilities</p><h1 className="mt-3 text-5xl font-bold tracking-tight">Book a free demo.</h1><p className="mx-auto mt-5 max-w-xl text-[#627067]">Meet the team, ask questions, and see how Tutor Acumen can support your learning journey.</p><div className="mx-auto mt-12 min-h-[620px] max-w-3xl overflow-hidden rounded-3xl bg-white shadow-sm">{url ? <iframe src={url} title="Book a Tutor Acumen demo" className="h-[620px] w-full border-0" /> : <div className="grid h-[620px] place-items-center p-8 text-[#627067]">Add <code>NEXT_PUBLIC_CALCOM_URL</code> to show your booking calendar.</div>}</div></div></div></main>;
+}
